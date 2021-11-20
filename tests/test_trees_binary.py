@@ -32,6 +32,18 @@ def test_tree_single_root_node():
      expected ='root'
      assert actual == expected
 
+def test_single_node_left_right_childs():
+    test = Binary_Tree()
+    node = Node("A")
+    node.left = Node("B")
+    node.right = Node("C")
+    expected_left = "B"
+    actual_left = node.left.value
+    expected_right = "C"
+    actual1_right = node.right.value
+    assert expected_left == actual_left
+    assert expected_right == actual1_right
+
 
 def test_preorder_traversal(tree_test_data):
     tree = Binary_Tree()
@@ -50,4 +62,36 @@ def test_postorder_traversal(tree_test_data):
     actual = tree.post_order(tree_test_data)
     expected = ['D', 'E', 'B', 'F', 'C', 'A']
     assert actual == expected
+
+def test_add_Binary_Search_Tree():
+    tree = Binary_Search_Tree()
+    tree.Add(50)
+    tree.Add(10)
+    tree.Add(25)
+    tree.Add(5)
+    tree.Add(150)
+    tree.Add(30)
+    tree.Add(250)
+    tree.Add(15)
+    tree.Add(100)
+    actual = tree.in_order(tree.root)
+    expected = [5, 10, 15, 25, 30, 50, 100, 150, 250]
+    assert actual == expected
+
+def test_Contains_method():
+    tree = Binary_Search_Tree()
+    tree.Add(50)
+    tree.Add(10)
+    tree.Add(25)
+    tree.Add(5)
+    tree.Add(150)
+    tree.Add(30)
+    tree.Add(250)
+    tree.Add(15)
+    tree.Add(100)
+
+    assert tree.Contains(7) == False
+    assert tree.Contains(5) == True
+    assert tree.Contains(150) == True
+    assert tree.Contains(1) == False
 

@@ -59,7 +59,7 @@ class Binary_Tree:
             raise Exception("Error  with post_order!!! ")
 
 
-class Binary_Search_Tree:
+class Binary_Search_Tree(Binary_Tree):
       def Add(self, value):
             """
             Add Method:
