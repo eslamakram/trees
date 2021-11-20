@@ -6,6 +6,7 @@ authors = ["Eslam Akram <eslam_akram91@yahoo.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+jupyter = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
