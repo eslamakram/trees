@@ -95,3 +95,17 @@ def test_Contains_method():
     assert tree.Contains(150) == True
     assert tree.Contains(1) == False
 
+def test_tree_max():
+  tree = Binary_Tree()
+  root = Node(2)
+  root.left = Node(26)
+  root.right = Node(17)
+  root.left.left = Node(18)
+  root.left.right = Node(8)
+  actual = tree.tree_max(root)
+  expected = 26
+  assert actual == expected
+
+# def test_tree_max_empty():
+#   tree = Binary_Tree()
+#   assert tree.tree_max() == "Error! the tree is empty"

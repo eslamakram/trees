@@ -58,6 +58,39 @@ class Binary_Tree:
          except:
             raise Exception("Error  with post_order!!! ")
 
+     def tree_max(self, root):
+            """
+            find maximum value
+            Returns: number
+            """
+            try:
+              
+                #Check whether tree is empty Base case
+                if(root == None):
+                    print("Tree is empty")
+                    return 0
+
+                else:
+                    #Variable maximum will store temp's data
+                    maximum = root.value
+
+                    #It will find largest element in left subtree
+                    if(root.left != None):
+                        leftMax = self.tree_max(root.left)
+                        #Compare variable maximum with leftMax and store greater value into maximum
+                        maximum = max(maximum, leftMax)
+
+                    #It will find largest element in right subtree
+                    if(root.right != None):
+                        rightMax = self.tree_max(root.right)
+                        #Compare variable maximum with rightMax and store greater value into maximum
+                        maximum = max(maximum, rightMax)
+
+                    return maximum
+
+            except:
+              raise Exception("Error with tree max!!! ")
+
 
 class Binary_Search_Tree(Binary_Tree):
       def Add(self, value):
