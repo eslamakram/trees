@@ -3,6 +3,45 @@ class Node:
         self.value = value
         self.left = None
         self.right = None
+        self.next = None
+
+
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+
+    def enqueue(self,value):
+        node = Node(value)
+        if not self.rear:
+            self.front = node
+            self.rear = node
+        else:
+            self.rear.next = node
+            self.rear = node
+
+    def dequeue(self):
+            if not self.front :
+                raise Exception('Queue is Empty')
+
+            if self.front==self.rear:
+                temp=self.front
+                self.front=None
+                self.rear=None
+                return temp.value
+            else:
+                temp=self.front
+                self.front=self.front.next
+                temp.next=None
+                return temp.value
+
+    def peek(self):
+        if not self.front:
+            raise Exception('Queue is empty...')
+        return self.front.value
+
+
 
 class Binary_Tree:
      def __init__(self):
@@ -58,13 +97,13 @@ class Binary_Tree:
          except:
             raise Exception("Error  with post_order!!! ")
 
-     def tree_max(self, root):
+     def tree_max(self, root = None):
             """
             find maximum value
             Returns: number
             """
             try:
-              
+
                 #Check whether tree is empty Base case
                 if(root == None):
                     print("Tree is empty")
@@ -91,7 +130,32 @@ class Binary_Tree:
             except:
               raise Exception("Error with tree max!!! ")
 
+     def Breadth_First(self,root):
+            """
+            Input: tree
+            Output: list of all values in the tree, in the order they were encountered
+            """
+            if not root:
+                        raise Exception("Tree is empty")
 
+            Breadth_First_Queue = Queue()
+            Breadth_First_Queue.enqueue(root)
+
+            try:
+                    while Breadth_First_Queue.peek():
+
+                            Front_Node = Breadth_First_Queue.dequeue()
+
+                            self.output.append(Front_Node.value)
+
+                            if Front_Node.left:
+                                Breadth_First_Queue.enqueue(Front_Node.left)
+
+                            if Front_Node.right:
+                                Breadth_First_Queue.enqueue(Front_Node.right)
+            except:
+                return self.output
+                # raise Exception("Error  with Breadth First!!! ")
 class Binary_Search_Tree(Binary_Tree):
       def Add(self, value):
             """
@@ -152,5 +216,6 @@ class Binary_Search_Tree(Binary_Tree):
                                 return True
                         else:
                             return False
+
 
 

@@ -6,7 +6,7 @@ Can successfully return a collection from a preorder traversal
 Can successfully return a collection from an inorder traversal
 Can successfully return a collection from a postorder traversal
 """
-from trees.trees import Node , Binary_Tree, Binary_Search_Tree
+from trees.trees import *
 import pytest
 
 @pytest.fixture
@@ -106,6 +106,19 @@ def test_tree_max():
   expected = 26
   assert actual == expected
 
-# def test_tree_max_empty():
-#   tree = Binary_Tree()
-#   assert tree.tree_max() == "Error! the tree is empty"
+def test_tree_max_empty():
+  tree = Binary_Tree()
+  assert tree.tree_max() == 0
+
+def test_Breadth_First_tree(tree_test_data):
+    tree = Binary_Tree()
+    actual = tree.Breadth_First(tree_test_data)
+    expected = ['A', 'B', 'C', 'D', 'E', 'F']
+    assert actual == expected
+
+def test_Breadth_First_Empty():
+    root=""
+    tree=Binary_Tree()
+    with pytest.raises(Exception,match="Tree is empty"):
+     actual=tree.Breadth_First(root)
+     assert actual
