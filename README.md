@@ -78,3 +78,50 @@ def tree_max(self, root):
             except:
               raise Exception("Error with tree max!!! ")
               ```
+
+# challange : Breadth First tree
+
+Write a function called breadth first
+Arguments: tree
+Return: list of all values in the tree, in the order they were encountered
+
+## Whiteboard Process
+
+![ch17](CH7.drawio.png)
+
+## Approach & Efficiency
+
+ i used iteration  approach to  travrese all nodes in the given binary tree.
+
+- time complexity: O(n)
+- space complexity: O(n)
+
+## Solution
+
+``` python
+def Breadth_First(self,root):
+            """
+            Input: tree
+            Output: list of all values in the tree, in the order they were encountered
+            """
+            if not root:
+                        raise Exception("Tree is empty")
+
+            Breadth_First_Queue = Queue()
+            Breadth_First_Queue.enqueue(root)
+
+            try:
+                    while Breadth_First_Queue.peek():
+
+                            Front_Node = Breadth_First_Queue.dequeue()
+
+                            self.output.append(Front_Node.value)
+
+                            if Front_Node.left:
+                                Breadth_First_Queue.enqueue(Front_Node.left)
+
+                            if Front_Node.right:
+                                Breadth_First_Queue.enqueue(Front_Node.right)
+            except:
+                return self.output
+```
