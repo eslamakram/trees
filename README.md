@@ -77,7 +77,7 @@ def tree_max(self, root):
 
             except:
               raise Exception("Error with tree max!!! ")
-              ```
+```
 
 # challange : Breadth First tree
 
@@ -98,7 +98,7 @@ Return: list of all values in the tree, in the order they were encountered
 
 ## Solution
 
-``` python
+
 def Breadth_First(self,root):
             """
             Input: tree
@@ -124,4 +124,3 @@ def Breadth_First(self,root):
                                 Breadth_First_Queue.enqueue(Front_Node.right)
             except:
                 return self.output
-```
