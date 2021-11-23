@@ -1,47 +1,46 @@
 from trees.trees import *
 
-def fizz_buzz_tree(tree):
+def k_ary(root):
+        """
+        Input: root
+        Output: list of items thats tree contains
+        """
+        k_ary_Queue = Queue()
+        k_ary_Queue.enqueue(root)
+
+        list_tree = []
+        while k_ary_Queue.peek():
+            Front_Node = k_ary_Queue.dequeue()
+            list_tree += [Front_Node.value]
+            if Front_Node:
+                for node in Front_Node.left:
+                    k_ary_Queue.enqueue(node)
+        return list_tree
+
+def fizz_buzz_checker(node):
+    if not node.value % 5 and not node.value % 3:
+        return "FizzBuzz"
+    elif not node.value % 3:
+        return "Fizz"
+    elif not node.value % 5:
+        return "Buzz"
+    else:
+        return str(node.value)
+
+def fizz_buzz_tree(root):
     """
     Arguments: k-ary tree
     Return:  new k-ary tree
     """
-    queue = Queue()
-    queue.enqueue(tree.root)
+    Fizz_Buzz_Queue = Queue()
+    Fizz_Buzz_Queue.enqueue(root)
 
-    while queue.peek():
-        front= queue.dequeue()
-        front.data=fizz_buzz(front)
-        for child in front.child:
-            queue.enqueue(child)
-    return tree
-
-def fizz_buzz(node):
-    if not node.data % 5 and not node.data % 3:
-        return "FizzBuzz"
-    elif not node.data % 3:
-        return "Fizz"
-    elif not node.data % 5:
-        return "Buzz"
-    else:
-        return str(node.data)
-
-def k_ary_bfs(tree):
-        """
-        A binary tree method which returns a list of items that it contains
-        input: None
-        output: tree items
-        """
-        breadth = Queue()
-        breadth.enqueue(tree.root)
-
-        list_of_items = []
-        while breadth.peek():
-            front = breadth.dequeue()
-            list_of_items += [front.data]
-            if front.child:
-                for item in front.child:
-                    breadth.enqueue(item)
-        return list_of_items
+    while Fizz_Buzz_Queue.peek():
+        Front_Node = Fizz_Buzz_Queue.dequeue()
+        Front_Node.value = fizz_buzz_checker(Front_Node)
+        for item in Front_Node.left and item in Front_Node.right:
+            Fizz_Buzz_Queue.enqueue(item)
+    return k_ary(root)
 
 if __name__=="__main__":
     pass
