@@ -18,29 +18,31 @@ def k_ary(root):
         return list_tree
 
 def fizz_buzz_checker(node):
-    if not node.value % 5 and not node.value % 3:
+    if node%15 == 0:
         return "FizzBuzz"
-    elif not node.value % 3:
+    elif node % 3 == 0:
         return "Fizz"
-    elif not node.value % 5:
+    elif node % 5 == 0:
         return "Buzz"
     else:
-        return str(node.value)
+        return str(node)
 
-def fizz_buzz_tree(root):
+def fizz_buzz_tree(self,root):
     """
     Arguments: k-ary tree
     Return:  new k-ary tree
     """
-    Fizz_Buzz_Queue = Queue()
-    Fizz_Buzz_Queue.enqueue(root)
+    output = []
+    Fizz_Buzz_tree = self.pre_order(root)
+    if self.root is None:
+        return "tree is empty"
+    else:
 
-    while Fizz_Buzz_Queue.peek():
-        Front_Node = Fizz_Buzz_Queue.dequeue()
-        Front_Node.value = fizz_buzz_checker(Front_Node)
-        for item in Front_Node.left and item in Front_Node.right:
-            Fizz_Buzz_Queue.enqueue(item)
-    return k_ary(root)
+      for i in  Fizz_Buzz_tree:
+          i = fizz_buzz_checker(i)
+          output.append(i)
+       
+    return output
 
 if __name__=="__main__":
     pass
