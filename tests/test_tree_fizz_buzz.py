@@ -17,9 +17,9 @@ def test_tree_fizz_buzz():
     tree.root.left.right=Node(30)
     tree.root.right.left=Node(95)
 
-    tree_fizz_buzz = fizz_buzz_tree(tree.root)
-    actual = tree_fizz_buzz
-    expected = ['FizzBuzz', 'Fizz','4' , '12', 'FizzBuzz', 'Buzz']
+    actual =  fizz_buzz_tree(tree,tree.root)
+    
+    expected = ['FizzBuzz', 'Fizz', 'Fizz', 'FizzBuzz', '4', 'Buzz']
 
     assert actual == expected
 
